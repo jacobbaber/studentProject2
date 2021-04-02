@@ -31,8 +31,19 @@ public class Card implements Comparable{
 	
 	@Override
 	public boolean equals(Object obj) {
+		if (obj instanceof Card) {
+			Card c = (Card) obj;
+			Card d = new Card(rank, suit);
+			int comparedCard = c.compareTo(d);
+			if (comparedCard == 0) {
+				return true;
+			}
+		}
+		return false;
 		
-	}
+		
+		
+	} 
 	
 	public Rank getRank() {
 		return rank;
