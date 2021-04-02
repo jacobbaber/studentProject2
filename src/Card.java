@@ -1,14 +1,23 @@
 
-public class Card {
+public class Card implements Comparable{
 	
 	private Rank rank;
 	private Suit suit;
 	
 	public Card(Rank rank, Suit suit) {
 		
+		if (rank == null || suit == null) {
+			throw new NullPointerException();
+		}
+		else {
+		this.rank = rank;
+		this.suit = suit;
+		}
+		
 	}
 	
 	public int compareTo(Card card) {
+		
 		
 	}
 	
@@ -32,6 +41,8 @@ public class Card {
 	public String toString() {
 		
 	}
+
+	
 	
 	
 
