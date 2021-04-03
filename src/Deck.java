@@ -30,6 +30,27 @@ public class Deck {
 
 	public List<Card> draw(int count){
 		
+		List<Card> drawnCards = new ArrayList<Card>();
+		
+		if (count > cards.size()) {
+			int size = cards.size();
+			for (int i = 0; i < size; ++i) {
+				drawnCards.add(draw());
+			}
+			return drawnCards;
+		}
+		if (count < 0) {
+			return drawnCards;
+		}
+		else {
+			for (int i = 0; i < count; ++i) {
+				drawnCards.add(draw());
+			}
+		}
+		return drawnCards;
+		
+	
+		
 	}
 	
 	public void shuffle() {
