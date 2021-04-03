@@ -1,3 +1,4 @@
+import java.util.Objects;
 
 public class Card implements Comparable{
 	
@@ -53,8 +54,9 @@ public class Card implements Comparable{
 		return suit;
 	}
 	
+	@Override
 	public int hashCode() {
-		
+	return Objects.hash(rank, suit);
 	}
 	
 	@Override
