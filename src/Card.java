@@ -61,7 +61,8 @@ public class Card implements Comparable{
 	
 	@Override
 	public String toString() {
-		
+		String card = "";
+		return card + rank.toString() + suit.toString();
 	}
 
 	
