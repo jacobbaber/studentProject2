@@ -35,6 +35,25 @@ public class BlackjackHand {
 	}
 	
 	public int getValue() {
+		int totalVal = 0;
+		boolean containsAce = false;
+		for (Card c : cards) {
+		totalVal = totalVal + CARD_VALUES.get(c.getRank());
+		if (c.getRank() == Rank.ACE) {
+			containsAce = true;
+			}
+		}
+		if (totalVal > MAX_VALUE && containsAce == true) {
+			totalVal = 0;
+			//todo make new card_values if cards contain an ace, then rerun the first part of the getValues method
+			Map<Rank, Integer> copy = createCardValues();
+			copy.replace(Rank.ACE, Integer.valueOf(1));
+			for (Card c : cards) {
+				totalVal = totalVal + CARD_VALUES.get(c.getRank());
+			
+			}
+		}
+		return totalVal;
 		
 	}
 
@@ -45,6 +64,15 @@ public class BlackjackHand {
 	
 	@Override
 	public String toString() {
+		String cardList = "[";
+		for (Card c: cards){
+			
+			cardList = cardList + c.toString()+ ", ";
+		}
+		cardList = cardList.substring(0, cardList.length() - 2);
+		cardList = cardList + "]";
+		
+		return cardList;
 		
 	}
 	
