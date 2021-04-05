@@ -9,7 +9,7 @@ public class BlackjackHand {
 	
 	private final int MAX_VALUE = 21;
 	
-	private final List<Card> cards = new ArrayList<Card>();
+	private List<Card> cards = new ArrayList<Card>();
 	
 	public BlackjackHand(Card c1, Card c2) {
 		cards.add(c1);
