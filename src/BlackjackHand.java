@@ -9,7 +9,7 @@ public class BlackjackHand {
 	
 	private final int MAX_VALUE = 21;
 	
-	private List<Card> cards = new ArrayList<Card>();
+	private final List<Card> cards = new ArrayList<Card>();
 	
 	public BlackjackHand(Card c1, Card c2) {
 		cards.add(c1);
@@ -29,33 +29,29 @@ public class BlackjackHand {
 	}
 	
 	public List<Card> getCards(){
-		List<Card> copy = cards;
+		List<Card> copy = new ArrayList<Card>(cards);
 		return copy;
 		
 	}
 	
 	public int getValue() {
 		int totalVal = 0;
-		boolean containsAce = false;
+		int containsAce = 0;
 		for (Card c : cards) {
 		totalVal = totalVal + CARD_VALUES.get(c.getRank());
 		if (c.getRank() == Rank.ACE) {
-			containsAce = true;
+			containsAce++;
 			}
 		}
-		if (totalVal > MAX_VALUE && containsAce == true) {
-			totalVal = 0;
-			//todo make new card_values if cards contain an ace, then rerun the first part of the getValues method
-			Map<Rank, Integer> copy = createCardValues();
-			copy.replace(Rank.ACE, Integer.valueOf(1));
-			for (Card c : cards) {
-				totalVal = totalVal + CARD_VALUES.get(c.getRank());
-			
+		while (totalVal > MAX_VALUE && containsAce > 0) {
+			totalVal = totalVal - 10;
+			--containsAce;
 			}
-		}
+		
 		return totalVal;
 		
 	}
+
 
 	public int size() {
 		return cards.size();
