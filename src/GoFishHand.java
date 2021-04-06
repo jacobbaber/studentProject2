@@ -29,6 +29,11 @@ public class GoFishHand {
 		cardSet.add(card);
 		cards.put(card.getRank(), cardSet);
 		++cardsInHand;
+		if (cardSet.size() == 4) {
+			removeCards(card.getRank());
+			cardsInHand = cardsInHand - 4;
+			books.add(card.getRank());
+		}
 		
 	}
 	
@@ -52,12 +57,21 @@ public class GoFishHand {
 	
 	public Map<Rank, Integer> getRankCounts(){
 		
+			Map<Rank, Integer> card = new HashMap<Rank, Integer>();
+			
 			
 		
 		
 	}
 	
 	public Set<Card> removeCards(Rank rank){
+		
+		Set<Card> removedCards = cards.remove(rank);
+		if (removedCards == null) {
+			Set<Card> emptySet = new HashSet<Card>();
+			return emptySet;
+		}
+		return removedCards;
 		
 	}
 	
