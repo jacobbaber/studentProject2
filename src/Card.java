@@ -1,6 +1,7 @@
 import java.util.Objects;
 
-public class Card implements Comparable{
+
+public class Card implements Comparable<Card>{
 	
 	private Rank rank;
 	private Suit suit;
