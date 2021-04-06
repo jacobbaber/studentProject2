@@ -65,6 +65,24 @@ public class GoFishHand {
 	public Map<Rank, Integer> getRankCounts(){
 		
 			Map<Rank, Integer> card = new HashMap<Rank, Integer>();
+			Integer rankCount = 0;
+			
+			for (Rank r : Rank.values()) {
+				if (cards.containsKey(r)) {
+				rankCount = Integer.valueOf(cards.get(r).size());
+				card.put(r, rankCount);
+				}
+				if (books.contains(r) == true) {
+					rankCount = 4;
+					card.put(r, rankCount);
+				}
+				
+				
+			
+			}
+			
+			return card;
+			
 		
 				
 			
@@ -91,6 +109,7 @@ public class GoFishHand {
 	
 	@Override
 	public String toString() {
+		return "CARDS: " + getCards().toString() + System.lineSeparator() + "BOOKS: " + getBooks().toString();
 		
 	}
 }
