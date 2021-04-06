@@ -50,14 +50,23 @@ public class GoFishHand {
 	}
 	
 	public Map<Rank, Set<Card>> getCards(){
-		Map<Rank, Set<Card>> copy = new HashMap<Rank, Set<Card>>(cards);
-		return copy;
+		Map<Rank, Set<Card>> copyMap = new HashMap<Rank, Set<Card>>();
+		
+		for (Rank r : Rank.values()) {
+		if (cards.containsKey(r) == true) {
+			Set<Card> copy = new HashSet<Card>(cards.get(r));
+			copyMap.put(r, copy);
+			}
+		}
+		return copyMap;
 		
 	}
 	
 	public Map<Rank, Integer> getRankCounts(){
 		
 			Map<Rank, Integer> card = new HashMap<Rank, Integer>();
+		
+				
 			
 			
 		
